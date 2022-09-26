@@ -104,23 +104,34 @@ flex: 1 1 auto;
 /* Grid Part 3 */
 
 #grid-section3 .grid {
-
+	display: grid;
+	grid-template-columns:1fr 2fr ;
+	grid-template-rows: 100px 300px 100px ;
+	gap: 10px ;
+	grid-template-areas: 
+	"h h "
+	"m s"
+	"f f ";
 }
 
 #grid-section3 .box1 {
-
+	grid-area: h;
+	order: 1;
 }
 
 #grid-section3 .box2 {
-
+	grid-area: m;
+	order: 3;
 }
 
 #grid-section3 .box3 {
-
+	grid-area: s;
+	order: 2;
 }
 
 #grid-section3 .box4 {
-
+	grid-area: f;
+	order: 4;
 }
 
 /* end Grid Part 3 */
