@@ -1,0 +1,98 @@
+* {
+  font-family: 'Libre Baskerville', serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+nav {
+  background: black;
+  opacity: 75%;
+  height: 100px;
+  position: relative;
+}
+ion-icon {
+  position: absolute;
+  left: 18px;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+
+}
+ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 15px;
+  padding: 10px;
+
+}
+li {
+  list-style: none;
+  text-decoration:none;
+  cursor:pointer;
+  color: white;
+  border: solid 1px whitesmoke;
+  padding: 10px;
+  border-radius: 5px;
+}
+li:hover{
+  background-color: gainsboro;
+  color: black;
+  transition: 0.5s ease-in-out;
+}
+.container-heading {
+  background-image: url("images/mistyforest.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+box-shadow: 0px 4px 4px 0px #00000040,inset 0 0 0 1000px rgba(0,0,0,.5); */
+  width: auto;
+  height: 100vh;
+  text-align: center;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-h1 {
+  font-weight: lighter;
+  margin: 10px;
+  padding: 10px;
+}
+.main-section {
+  margin: 1em;
+  padding: 2em;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border: 1px solid gainsboro;
+  color: whitesmoke;
+}
+p {
+  margin: 12px;
+}
+button {
+  margin: 10px;
+  list-style: none;
+  text-decoration:none;
+  cursor:pointer;
+  color: black;
+  border: solid 1px whitesmoke;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+a:link {
+  color: whitesmoke;
+  background-color: transparent;
+  text-decoration: none;
+}
+button:hover{
+  background-color: gray;
+  color: black;
+  transition: 0.3s ease-in-out;
+}
