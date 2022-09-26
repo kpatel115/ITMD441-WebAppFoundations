@@ -53,11 +53,22 @@ flex: 1 1 auto;
 /* Flexbox Part 3 */
 
 #flex-section3 .box {
-
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: row wrap;
 }
 
 #flex-section3 .tags ul {
-
+	display: flex;
+	margin: 1px;
+	margin-left: -37px;
+	flex-flow: row wrap;
+	justify-content: flex-start start left;
+	align-items: center;
+	align-content: center;
+	text-decoration: none;
+	list-style: none;
 }
 
 /* end Flexbox Part 3 */
