@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Factory Patterns</title>
+    <script>
+
+      function Car(wheels) {
+        this.wheels = wheels;
+      }
+
+      function Cycle(wheels) {
+        this.wheels = wheels;
+      }
+
+      function carFactory(wheels) {
+        if (wheels === 3){
+          return new Cycle(wheels);
+        } else {
+          return new Car(wheels);
+        }
+      }
+
+      let vehicle = carFactory(2);
+
+    </script>
+
+  </head>
+  <body>
+	
+  </body>
+</html>

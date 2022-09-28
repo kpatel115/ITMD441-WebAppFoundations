@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object Literal</title>
+    <script>
+
+      // object literal
+      let vehicle1 = {
+        doors: 4,
+        color: 'black',
+        wheels: 4,
+        company: 'Ford',
+        // adding a method to an object literal
+        // define a key - add anonymous function
+        start: function(){ 
+          console.log('Started Vehicle with ' + this.doors + ' doors!');
+        }
+      };
+
+      let car1 = {
+        doors: 2,
+        color: 'blue',
+        wheels: 4,
+        //prototype object - inherited a method by calling 
+        // car1.start() - 
+        //not only inherits from vehicle1 but uses its own value for doors
+        __proto__: vehicle1
+      };
+
+    </script>
+
+  </head>
+  <body>
+	
+  </body>
+</html>

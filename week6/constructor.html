@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Constructor Function</title>
+    <script>
+      // best practice for capital letter to start constructor function
+      function Car(doors, color){
+        // created two public properties
+        this.doors = doors;
+        this.color = color;
+        let that = this; // fixes undefined issue
+
+        let miles = 0;
+
+        let report = function() {
+          console.log('Run Report: ');
+          console.log('Miles: ' + miles);
+          //console.log('Doors: ' + this.doors);
+          console.log('Doors: ' + that.doors); 
+          //reason for returning undefined value for doors when calling
+          // c.runReport();
+          // main problem was the access of the value - public, private
+
+        };
+
+        // create a public method
+        this.start = function(){
+          console.log('Car has' + this.doors +' doors has started!');
+          // miles variable is in scope
+          // once car functions runs and is done
+          // the variable still active during js runtime
+          // miles exists inside not outside the object
+          console.log('Miles: ' + miles);
+        };
+
+        this.addMile = function(){
+          miles = miles + 1;
+        };
+
+        this.runReport = function(){
+          //report.call(this); with this doors is now not undefined
+          report();
+        };
+      }
+
+      let c = new Car(4, 'black');
+
+
+      // function.prototype.bind appy call 
+    </script>
+
+  </head>
+  <body>
+	
+  </body>
+</html>
