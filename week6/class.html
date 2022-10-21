@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Class</title>
+    <script>
+      class Vehicle {
+        constructor(wheels, doors) {
+          this.wheels= wheels;
+          this._doors = doors;
+          this._miles = 0;
+        };
+        // getters and setters
+        get doors() {
+          console.log('getting _doors value');
+          return this._doors;
+        };
+
+        set doors(d) {
+          console.log('setting _doors value');
+          this.doors = d;
+        };
+
+        get miles(){
+          return this._miles;
+        };
+        set miles(m) {
+          this._miles = m;
+        };
+
+        get desc() {
+          return 'Vehicle with ' + this._doors + ' doors and ' + this.wheels + " wheels.";
+        };
+
+        run() {
+          console.log('Vehicle is running.');
+        }
+
+        start() {
+          console.log('Started Vehicle with ' + this._doors + ' doors.');
+        }
+      }
+
+      let v = new Vehicle(4, 4);
+
+      class Car extends Vehicle {
+        constructor(wheels, doors, color){
+          super(wheels, doors);
+          this._color = color;
+        }
+        get color() {
+          return this._color;
+        }
+        set color(c) {
+          this._color = c;
+        }
+
+        start() {
+          console.log('Started ' + this._color + ' car with ' + this._doors + ' doors.'); 
+        }
+      }
+
+      let c = new Car(4, 2, 'red');
+
+      class Ford extends Car {
+        constructor(wheels, doors, color) {
+          super(wheels, doors, color);
+          this._model = 'Ford';
+        }
+        get model() {
+          return this._model;
+        }
+
+        start() {
+          console.log('Started ' + this._color + ' car with ' + this._doors + ' doors.'); 
+        }
+
+        static report() {
+          console.log('this is a static method.');
+        }
+      }
+
+      let f = new Ford(4, 4, 'blue');
+
+      // a public wheels property
+
+      class CarWithPublicFields {
+        wheels = 4;
+        _color;
+        static staticProp = 'this is a static property';
+        #miles = 25;
+
+        constructor(color) {
+          this._color = color;
+        }
+
+        report() {
+          console.log('this is a static method. Miles: ' + this.#miles );
+        }
+      }
+
+      let cpf = new CarWithPublicFields('blue');
+    </script>
+
+  </head>
+  <body>
+	
+  </body>
+</html>
