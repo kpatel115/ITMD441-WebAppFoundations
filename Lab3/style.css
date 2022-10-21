@@ -1,0 +1,16 @@
+body {
+  background-color: antiquewhite;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.form-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+
+}
+.form-wrapper{
+  border: 1px solid gainsboro;
+  padding: 25px;
+}
