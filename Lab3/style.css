@@ -1,5 +1,4 @@
 body {
-  background-color: antiquewhite;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .form-container{
@@ -7,10 +6,11 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-
+  height: 100vh;
 }
 .form-wrapper{
-  border: 1px solid gainsboro;
+  background-color: antiquewhite;
+  border: 2px solid gainsboro;
+  margin-top: 25px;
   padding: 25px;
 }

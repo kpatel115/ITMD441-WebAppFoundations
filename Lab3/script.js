@@ -21,13 +21,11 @@ function tipCalc(event){
     alert("please enter valid number");
   } else {
   let tip = document.getElementById("tip").value;
-  console.log(bill);
-  console.log(tip);
   let tipPercent = document.getElementById("tipPercentage").value = tip;
   let tipTotal = bill * (tip/100);
   let tipAmount = document.getElementById("tipAmount").value = tipTotal.toFixed(2);
-  let total = parseFloat(bill) + parseFloat(tipAmount);
-  let billTotal = document.getElementById("billWithTip").value = total.toFixed(2);
+  let totalWithTip = parseFloat(bill) + parseFloat(tipAmount);
+  let billTotal = document.getElementById("billWithTip").value = totalWithTip.toFixed(2);
   event.preventDefault();
   }
 };
