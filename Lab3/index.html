@@ -20,14 +20,15 @@
       <h3>ITMD441 - Lab 3 - Karan Patel</h3>
       <h1>Tip Calculator</h1>
       <div class="form-wrapper">
-        <form>
+        <form id="form">
           <div class="mb-3">
             <label for="billTotal" class="form-label">Bill Total: </label>
-            <input type="number" class="form-control" id="billTotal" required>
+            <input type="text" class="form-control" id="bill" required>
           </div>
           <div class="mb-3">
             <label for="tip" class="form-label">Tip: </label>
-            <input type="range" id="tip" min="0" max="100" required>
+            <input type="range" id="tip" min="0" max="100" value="20" oninput="this.nextElementSibling.value = this.value" required>
+            <output>20</output><p id="slider"></p><span>%</span>
           </div>
           <div class="mb-3">
             <label for="tipPercentage" class="form-label">Tip Percentage: </label>
@@ -41,7 +42,9 @@
             <label for="billWithTip" class="form-label">Total Bill with Tip: </label>
             <input type="number" class="form-control" id="billWithTip" disabled>
           </div>
-          <button type="submit" class="btn btn-primary" onclick="validateForm()" >Submit</button>
+          <!-- <button type="submit" class="btn btn-primary" onclick="tipCalculator()" >Submit</button> -->
+          <button type="submit" class="btn btn-primary" id="btn">Submit</button>
+          
         </form>
       </div>
     </section>

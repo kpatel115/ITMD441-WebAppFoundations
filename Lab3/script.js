@@ -1,14 +1,12 @@
-let bill = document.getElementById("billTotal").value;
-let tip = document.getElementById("tip");
-let tipPercentage = document.getElementById("tipPercentage");
-let tipAmount = document.getElementById("tipAmount");
-let billTotal = document.getElementById("billWithTip");
+let btn = document.getElementById("btn");
 
-function validateForm() {
-  if(isNaN(bill) || bill < 0) {
-    alert("A number must be entered into the bill input")
-
-  } else{
-    console.log("bill input works")
-  }
-}
+btn.addEventListener("click", function(event){
+  let bill = document.getElementById("bill").value;
+  let tip = document.getElementById("tip").value;
+  console.log(bill);
+  console.log(tip);
+  let tipPercent = document.getElementById("tipPercentage").value = tip;
+  let tipAmount = document.getElementById("tipAmount").value = bill * (tip/100);
+  let billTotal = document.getElementById("billWithTip").value = parseFloat(bill) + parseFloat(tipAmount);
+  event.preventDefault();
+})
