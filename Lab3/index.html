@@ -22,13 +22,13 @@
       <div class="form-wrapper">
         <form id="form">
           <div class="mb-3">
-            <label for="billTotal" class="form-label">Bill Total: </label>
-            <input type="text" class="form-control" id="bill" required>
+            <label for="bill" class="form-label">Bill Total: </label>
+            <input type="text" class="form-control" id="bill" onkeyup="tipCalc()" required>
           </div>
           <div class="mb-3">
             <label for="tip" class="form-label">Tip: </label>
-            <input type="range" id="tip" min="0" max="100" value="20" oninput="this.nextElementSibling.value = this.value" required>
-            <output>20</output><p id="slider"></p><span>%</span>
+            <input type="range" id="tip" min="0" max="100" value="20" onkeyup="tipCalc()" oninput="this.nextElementSibling.value = this.value" required>
+            <output>20</output><span>%</span><p id="slider"></p>
           </div>
           <div class="mb-3">
             <label for="tipPercentage" class="form-label">Tip Percentage: </label>
