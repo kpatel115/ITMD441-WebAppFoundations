@@ -1,5 +1,6 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
 }
 .image-container{
   max-width: 100%;
@@ -18,10 +19,12 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: whitesmoke;
 }
 .form-wrapper{
-  background-color: antiquewhite;
-  border: 2px solid gainsboro;
+  color: black;
+  background-color: rgb(250, 242, 242);
   margin-top: 25px;
   padding: 25px;
+  opacity: 0.90;
 }
