@@ -29,3 +29,12 @@ let bag = {
 }
 alert( bag.pear );
 alert( bag.fruit );
+
+function Obj1(name, age) {
+  return {
+    name,
+    age,
+  }
+}
+Obj1(karan, 24);
+console.log(name + age);
