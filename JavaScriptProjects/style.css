@@ -1,0 +1,34 @@
+.cards-container{
+  margin: 0px 0px;
+  height: 82vh;
+}
+.cards-wrapper{
+  margin: 0px 90px;
+  position: relative;
+  height: 74vh;
+}
+.cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: stretch;
+  gap: 12px;
+  height: 59vh;
+}
+.card{
+  width: 320px;
+  height: 390px;
+}
+.card img {
+  max-width: 100%;
+  width: 320px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+.card-info{
+  display: flex;
+  justify-content: space-between;
+  height: 25px;
+  position: relative;
+  margin-top: 15px;
+}
