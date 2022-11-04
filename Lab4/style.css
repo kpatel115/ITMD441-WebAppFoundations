@@ -19,14 +19,24 @@ main{
 
 }
 .dashboard{
-  width: 600px;
-  height: 400px;
+  width: 650px;
+  height: 500px;
 
   border-radius: 12px;
   opacity: 0.8;
   background-color:slategray;
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 20% 30% 50%;
+  grid-template-areas: 
+  "form form"
+  "content content"
+  "forecast forecast";
 }
+
 .dashboard-form{
+  grid-area: form;
   padding: 16px;
   font-size: 1em;
 }
@@ -40,6 +50,12 @@ main{
 
   background-color: black;
   color: whitesmoke;
+}
 
+.dashboard-content{
+  grid-area: content;
+}
 
+.dashboard-forecast{
+  grid-area: forecast;
 }
