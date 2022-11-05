@@ -1,4 +1,4 @@
-// Geolocation API
+// Geolocation API - Automatic Load page show current weather conditions
 navigator.geolocation.getCurrentPosition((position) => {
   function doSomething(a, b){
     let currentLatitude = a;
@@ -13,7 +13,21 @@ navigator.geolocation.getCurrentPosition((position) => {
 
 
 
-// // Weather Web API
-// fetch("https://weatherdbi.herokuapp.com/data/weather/41.8446119,-87.6285002")
-//     .then(res=>res.json())
-//     .then(json=>console.log(json))
+// Weather Web API
+function SearchWeatherForm() {
+
+  let inputCity = document.getElementById("search-input").value;
+
+  if (inputCity === ""){
+    alert("Please enter valid city name");
+  } else {
+    let refinedInputCity = inputCity.replace(/\s/g, "");
+    // or 
+    //let refinedInputCity1 = inputCity.split(" ").join("");
+
+    fetch("https://weatherdbi.herokuapp.com/data/weather/" + refinedInputCity )
+    .then(res=>res.json())
+    .then(json=>console.log(json))
+
+  };
+}

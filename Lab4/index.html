@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weather API Dashboard</title>
     <link type="text/css" rel="stylesheet" href="style.css">
+    <!--FontAwesome Icons-->
+    <script src="https://kit.fontawesome.com/369fe9d219.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <main>
@@ -18,7 +20,8 @@
             <form>
               <label id="search-header">Search</label>
               <br>
-              <input type="text" placeholder="City Name">
+              <input id="search-input" type="text" placeholder="City Name">
+              <button type="button" onclick="SearchWeatherForm()"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
           </div>
 
