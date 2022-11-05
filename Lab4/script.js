@@ -3,6 +3,7 @@ navigator.geolocation.getCurrentPosition((position) => {
   function doSomething(a, b){
     let currentLatitude = a;
     let currentLongitude = b;
+    alert("Weather in your location will be loaded!");
     fetch("https://weatherdbi.herokuapp.com/data/weather/"+ currentLatitude + "," + currentLongitude)
     .then(res=>res.json())
     .then(json=>console.log(JSON.stringify(json)))
