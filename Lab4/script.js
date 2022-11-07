@@ -28,9 +28,14 @@ function displayWeather(arg){
   dash_precip.innerHTML = "Precipitation: " + arg.currentConditions.precip;
   dash_humidity.innerHTML = "Humidity: " + arg.currentConditions.humidity;
   dash_wind.innerHTML = "Wind: " + arg.currentConditions.wind.mile + " mph";
-  dash_icon.innerHTML = arg.currentConditions.iconURL;
+  // dash_icon.innerHTML = arg.currentConditions.iconURL;
+  dash_icon.innerHTML = `<img src="${arg.currentConditions.iconURL}"/>`
+  
   dash_comment.innerHTML = arg.currentConditions.comment;
+  }
 
+function displayWeatherForecast(arg){
+  
   // 7 Day Forecast
   // let dash_region = document.getElementById("region");
   // let dash_day = document.getElementById("day");
@@ -49,10 +54,7 @@ function displayWeather(arg){
   // dash_wind.innerHTML = arg.currentConditions.wind.mile;
   // dash_icon.innerHTML = arg.currentConditions.iconURL;
   // dash_comment.innerHTML = arg.currentConditions.comment;
-
-  }
-
-
+}
 
 // Weather Web API
 function SearchWeatherForm() {
@@ -79,7 +81,8 @@ function SearchWeatherForm() {
 
     .then( json => {
       console.log(json);
-      displayWeather(json)
+      displayWeather(json);
+      //displayWeatherForecast(json);
     })
 
     .catch ((error) => console.error("Fetch Error:", error));
