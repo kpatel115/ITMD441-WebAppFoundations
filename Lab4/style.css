@@ -19,8 +19,8 @@ main{
 
 }
 .dashboard{
-  width: 650px;
-  height: 500px;
+  width: 700px;
+  height: 600px;
 
   border-radius: 12px;
   opacity: 0.8;
@@ -87,11 +87,11 @@ main{
   padding: 20px;
 
 }
-/* .dashboard-content-grid{
+.dashboard-forecast-grid{
   display: grid;
   grid-template-columns: repeat(7, 14.2%);
   grid-template-rows: 100%;
   grid-template-areas: 
   "day1 day2 day3 day4 day5 day6 day7"
   ;
-} */
+}
