@@ -14,9 +14,8 @@ navigator.geolocation.getCurrentPosition((position) => {
      }})
  
      .then( json => {
-       console.log(json);
        displayWeather(json);
-       //displayWeatherForecast(json);
+       displayWeatherForecast(json);
      })
     //.then(res=>res.json())
     //.then(json=>console.log(JSON.stringify(json)))
@@ -45,44 +44,33 @@ function displayWeather(arg){
   dash_icon.innerHTML = `<img src="${arg.currentConditions.iconURL}"/>`
   
   dash_comment.innerHTML = arg.currentConditions.comment;
-  }
+};
 
 function displayWeatherForecast(arg){
-  let forecast_grid = document.getElementsByClassName("dashboard-forecast-grid");
+  let forecast_grid = document.getElementById("dashboard-forecast-grid");
 
   for(i = 0, l = arg.next_days.length; i < l; i++){
     var obj = arg.next_days[i];
 
     forecast_grid.innerHTML +=`
     <div class="day1">
-      <p id="fDay">${obj.day}</p>
-      <p id="fComment">${obj.comment}</p>
-      <p id="fMax">${obj.max_temp.f + "°F"}</p>
-      <p id="fMin">${obj.min_temp.f}</p>
+      <p>${obj.day}</p>
+      <p>${obj.comment}</p>
+      <p>${obj.max_temp.f + "°F"}</p>
+      <p>${obj.min_temp.f}</p>
       <img src="${obj.iconURL}">
     </div>`;
-
-    console.log(obj + "day: " + i);
-
-    // let divDay = () => {
-      
   }
 };
 
 // Weather Web API
 function SearchWeatherForm() {
-  let weatherObject;
   let inputCity = document.getElementById("search-input").value;
-
   if (inputCity === ""){
     alert("Please enter valid city name");
   } 
   else {
-
     let refinedInputCity = inputCity.replace(/\s/g, "");
-
-    // or 
-    //let refinedInputCity1 = inputCity.split(" ").join("");
 
     fetch("https://weatherdbi.herokuapp.com/data/weather/" + refinedInputCity )
     .then((res) => {
@@ -93,12 +81,10 @@ function SearchWeatherForm() {
     }})
 
     .then( json => {
-      console.log(json);
       displayWeather(json);
       displayWeatherForecast(json);
     })
 
     .catch ((error) => console.error("Fetch Error:", error));
   };
-  
-}
+};
