@@ -54,7 +54,7 @@ function displayWeather(arg){
 function displayWeatherForecast(arg){
   let forecast_grid = document.getElementById("dashboard-forecast-grid");
   
-  for(i = 0, l = arg.next_days.length; i < l; i++){
+  for(i = 1, l = arg.next_days.length; i < l; i++){
     var obj = arg.next_days[i];
 
     forecast_grid.innerHTML +=`
@@ -62,7 +62,7 @@ function displayWeatherForecast(arg){
       <p>${obj.day}</p>
       <p>${obj.comment}</p>
       <p>${obj.max_temp.f + "°F"}</p>
-      <p>${obj.min_temp.f}</p>
+      <p>${obj.min_temp.f + "°F"}</p>
       <img src="${obj.iconURL}">
     </div>`;
   }
