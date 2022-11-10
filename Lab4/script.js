@@ -1,4 +1,5 @@
-// Geolocation API - Automatic Load page show current weather conditions
+// Geolocation API - Automatic Load page show current weather conditions - Click Button
+let getCurrentLocation = () => {
 navigator.geolocation.getCurrentPosition((position) => {
   function doSomething(a, b){
     let currentLatitude = a;
@@ -22,7 +23,9 @@ navigator.geolocation.getCurrentPosition((position) => {
   };
   doSomething(position.coords.latitude, position.coords.longitude);
 });
+};
 
+// Displays Main Weather Forecast for Today based on input and Click
 function displayWeather(arg){
   // Current Weather Forecast
   let dash_region = document.getElementById("region");
@@ -46,14 +49,16 @@ function displayWeather(arg){
   dash_comment.innerHTML = arg.currentConditions.comment;
 };
 
+
+// Displays 7 Day forecast based on input and click - must be reset before another search
 function displayWeatherForecast(arg){
   let forecast_grid = document.getElementById("dashboard-forecast-grid");
-
+  
   for(i = 0, l = arg.next_days.length; i < l; i++){
     var obj = arg.next_days[i];
 
     forecast_grid.innerHTML +=`
-    <div class="day1">
+    <div id="day1">
       <p>${obj.day}</p>
       <p>${obj.comment}</p>
       <p>${obj.max_temp.f + "°F"}</p>
@@ -61,11 +66,16 @@ function displayWeatherForecast(arg){
       <img src="${obj.iconURL}">
     </div>`;
   }
+  
 };
 
-// Weather Web API
+// The actual Function that runs when click incorporates two above functions for forecast
 function SearchWeatherForm() {
+  let forecast_grid = document.getElementById("dashboard-forecast-grid");
   let inputCity = document.getElementById("search-input").value;
+
+  forecast_grid.innerHTML=""
+
   if (inputCity === ""){
     alert("Please enter valid city name");
   } 

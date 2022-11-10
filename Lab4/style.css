@@ -6,9 +6,7 @@ body{
   height: 100%;
   overflow: hidden;
 }
-main{
 
-}
 .dash-container {
   border: 1px solid black;
   height: 99.7vh;
@@ -47,7 +45,6 @@ main{
   border-radius: 12px;
   width: 80%;
   height: 30px;
-
   background-color: black;
   color: whitesmoke;
 }
@@ -64,15 +61,12 @@ main{
   "left right"
   "bottom bottom"
   ;
-
 }
 .dash-cont-left{
   grid-area: left;
 }
 .dash-cont-right{
   grid-area: right;
-  /* display: flex;
-  flex-direction: column; */
 }
 .dash-cont-bottom{
   grid-area: bottom;
@@ -85,13 +79,9 @@ main{
 .dashboard-forecast{
   grid-area: forecast;
   padding: 20px;
-
 }
 #dashboard-forecast-grid{
   display: grid;
   grid-template-columns: repeat(8, 12.5%);
   grid-template-rows: 100%;
-  /* grid-template-areas: 
-  "day1 day2 day3 day4 day5 day6 day7" */
-  ;
 }
