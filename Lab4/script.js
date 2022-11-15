@@ -25,50 +25,6 @@ navigator.geolocation.getCurrentPosition((position) => {
 });
 };
 
-// Displays Main Weather Forecast for Today based on input and Click
-function displayWeather(arg){
-  // Current Weather Forecast
-  let dash_region = document.getElementById("region");
-  let dash_day = document.getElementById("day");
-  let dash_temp = document.getElementById("temp");
-  let dash_precip = document.getElementById("precip");
-  let dash_humidity = document.getElementById("humidity");
-  let dash_wind = document.getElementById("wind");
-  let dash_icon = document.getElementById("icon");
-  let dash_comment = document.getElementById("comment");
-
-  dash_region.innerHTML = arg.region;
-  dash_day.innerHTML = arg.currentConditions.dayhour;
-  dash_temp.innerHTML = arg.currentConditions.temp.f + " °F";
-  dash_precip.innerHTML = "Precipitation: " + arg.currentConditions.precip;
-  dash_humidity.innerHTML = "Humidity: " + arg.currentConditions.humidity;
-  dash_wind.innerHTML = "Wind: " + arg.currentConditions.wind.mile + " mph";
-  // dash_icon.innerHTML = arg.currentConditions.iconURL;
-  dash_icon.innerHTML = `<img src="${arg.currentConditions.iconURL}"/>`
-  
-  dash_comment.innerHTML = arg.currentConditions.comment;
-};
-
-
-// Displays 7 Day forecast based on input and click - must be reset before another search
-function displayWeatherForecast(arg){
-  let forecast_grid = document.getElementById("dashboard-forecast-grid");
-  
-  for(i = 1, l = arg.next_days.length; i < l; i++){
-    var obj = arg.next_days[i];
-
-    forecast_grid.innerHTML +=`
-    <div id="day1">
-      <p>${obj.day}</p>
-      <p>${obj.comment}</p>
-      <p>${obj.max_temp.f + "°F"}</p>
-      <p>${obj.min_temp.f + "°F"}</p>
-      <img src="${obj.iconURL}">
-    </div>`;
-  }
-  
-};
-
 // The actual Function that runs when click incorporates two above functions for forecast
 function SearchWeatherForm() {
   let forecast_grid = document.getElementById("dashboard-forecast-grid");
@@ -103,6 +59,55 @@ function SearchWeatherForm() {
   });
   };
 };
+
+// Displays Main Weather Forecast for Today based on input and Click
+function displayWeather(arg){
+  // Current Weather Forecast
+  let dash_region = document.getElementById("region");
+  let dash_day = document.getElementById("day");
+  let dash_temp = document.getElementById("temp");
+  let dash_precip = document.getElementById("precip");
+  let dash_humidity = document.getElementById("humidity");
+  let dash_wind = document.getElementById("wind");
+  let dash_icon = document.getElementById("icon");
+  let dash_comment = document.getElementById("comment");
+
+  dash_region.innerHTML = arg.region;
+  dash_day.innerHTML = arg.currentConditions.dayhour;
+  dash_temp.innerHTML = arg.currentConditions.temp.f + " °F";
+  dash_precip.innerHTML = "Precipitation: " + arg.currentConditions.precip;
+  dash_humidity.innerHTML = "Humidity: " + arg.currentConditions.humidity;
+  dash_wind.innerHTML = "Wind: " + arg.currentConditions.wind.mile + " mph";
+  // dash_icon.innerHTML = arg.currentConditions.iconURL;
+  dash_icon.innerHTML = `<img src="${arg.currentConditions.iconURL}"/>`
+  
+  dash_comment.innerHTML = arg.currentConditions.comment;
+};
+
+// Displays 7 Day forecast based on input and click - must be reset before another search
+function displayWeatherForecast(arg){
+  let forecast_grid = document.getElementById("dashboard-forecast-grid");
+  
+  for(i = 1, l = arg.next_days.length; i < l; i++){
+    var obj = arg.next_days[i];
+
+    forecast_grid.innerHTML +=`
+    <div id="day1">
+      <p>${obj.day}</p>
+      <p>${obj.comment}</p>
+      <p>${obj.max_temp.f + "°F"}</p>
+      <p>${obj.min_temp.f + "°F"}</p>
+      <img src="${obj.iconURL}">
+    </div>`;
+  }
+  
+};
+
+document.getElementById("search_input").addEventListener("keyup", function (event) {
+  if (event.key === "Enter") {
+    SearchWeatherForm();
+  };
+});
 
 // function formValidation() {
 
