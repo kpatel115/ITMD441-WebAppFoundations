@@ -17,18 +17,18 @@
         <div class="dashboard">
 
           <div class="dashboard-form">
-            <form>
+            <form id="myform">
               <label id="search-header">Weather API Dashboard</label>
               <br>
-              <input id="search_input" type="text" placeholder="City Name">
-              <button id="search-button" type="button" onclick="SearchWeatherForm()"><i class="fa-solid fa-magnifying-glass"></i></button>
+              <input id="search-input" type="text" placeholder="City Name">
+              <button id="search-button" type="submit" onclick="SearchWeatherForm()"><i class="fa-solid fa-magnifying-glass"></i></button>
               <button type="button" onclick="getCurrentLocation()">GeoLocation</button>
             </form>
           </div>
 
           <div class="dashboard-content">
             <h2 id="dash-header">Today's Forecast</h2>
-            <div class="dashboard-content-grid">
+            <div id="dashboard-content-grid" class="dashboard-content-grid">
             
               <div class="dash-cont-right">
                 <p id="region"></p>

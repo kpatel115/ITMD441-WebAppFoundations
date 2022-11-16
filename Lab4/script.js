@@ -29,31 +29,37 @@ navigator.geolocation.getCurrentPosition((position) => {
 function SearchWeatherForm() {
   let forecast_grid = document.getElementById("dashboard-forecast-grid");
   let inputCity = document.getElementById("search-input").value;
-  let specialChar = /[^a-zA-Z ]/g;
+  let dash_content = document.getElementById("dashboard-content-grid");
+  // let specialChar = /[^a-zA-Z ]/g;if (inputCity.match(specialChar))
   forecast_grid.innerHTML=""
 
   if (inputCity === ""){
     alert("Please enter valid city name");
-  } else if (inputCity.match(specialChar)) {
+  } else  {
     let refinedInputCity = inputCity.replace(/\s/g, "");
 
     fetch("https://weatherdbi.herokuapp.com/data/weather/" + refinedInputCity )
     .then((res) => {
-     if (res.ok){
+     if (res){
       return res.json(); 
      } else {
-      console.log("error occured" + Error);
       throw new Error("Network Response Error");
     }})
 
     .then( json => {
+      if(json.status){
+        console.log(json);
+        alert(json + json.message);
+        dash_content.innerHTML = "";
+        forecast_grid.innerHTML = "";
+        dash_content.innerHTML = json.message + "Please enter a valid input";
+        
+      } else {
       displayWeather(json);
       displayWeatherForecast(json);
-    })
+  }})
 
     .catch ((error) => {
-    
-    alert(error);
     console.error("Fetch Error:", error)
     forecast_grid.innerHTML = "";
   });
@@ -103,10 +109,11 @@ function displayWeatherForecast(arg){
   
 };
 
-document.getElementById("search_input").addEventListener("keyup", function (event) {
-  if (event.key === "Enter") {
-    SearchWeatherForm();
-  };
+// enter = search button
+document.getElementById("myform").addEventListener("submit", function (event) {
+  event.preventDefault();  
+  SearchWeatherForm();
+    
 });
 
 // function formValidation() {
