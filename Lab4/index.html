@@ -22,7 +22,7 @@
               <br>
               <input id="search-input" type="text" placeholder="City Name">
               <button id="search-button" type="submit" onclick="SearchWeatherForm()"><i class="fa-solid fa-magnifying-glass"></i></button>
-              <button type="button" onclick="getCurrentLocation()">GeoLocation</button>
+              <button id="geo-button" type="button" onclick="getCurrentLocation()">GeoLocation</button>
             </form>
           </div>
 
@@ -38,6 +38,9 @@
               <div class="dash-cont-left">
                 <p id="icon"></p>
                 <p id="temp"></p>
+                <div id="load" class="loading-container">
+                  <img id="loading" class="loading" src="images/loadingcat.gif">
+                </div>
               </div>
               <div class="dash-cont-bottom">
                 <p id="precip"></p>

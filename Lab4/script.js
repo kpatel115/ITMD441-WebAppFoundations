@@ -4,64 +4,64 @@ navigator.geolocation.getCurrentPosition((position) => {
   function doSomething(a, b){
     let currentLatitude = a;
     let currentLongitude = b;
+    loadingGif()
     alert("Weather in your location will be loaded!");
     fetch("https://weatherdbi.herokuapp.com/data/weather/"+ currentLatitude + "," + currentLongitude)
-    
     .then((res) => {
       if (res.ok){
        return res.json(); 
       } else {
        throw new Error("Network Response Error");
      }})
- 
      .then( json => {
+      
        displayWeather(json);
        displayWeatherForecast(json);
      })
-    //.then(res=>res.json())
-    //.then(json=>console.log(JSON.stringify(json)))
   };
   doSomething(position.coords.latitude, position.coords.longitude);
 });
 };
 
-// The actual Function that runs when click incorporates two above functions for forecast
+// Fetches Weather API when Search Button clicked
 function SearchWeatherForm() {
   let forecast_grid = document.getElementById("dashboard-forecast-grid");
   let inputCity = document.getElementById("search-input").value;
   let dash_content = document.getElementById("dashboard-content-grid");
-  // let specialChar = /[^a-zA-Z ]/g;if (inputCity.match(specialChar))
+
+  
   forecast_grid.innerHTML=""
 
   if (inputCity === ""){
     alert("Please enter valid city name");
-  } else  {
+  } else {
+    loadingGif();
     let refinedInputCity = inputCity.replace(/\s/g, "");
 
     fetch("https://weatherdbi.herokuapp.com/data/weather/" + refinedInputCity )
     .then((res) => {
-     if (res){
+     if (!res.ok){
       return res.json(); 
      } else {
       throw new Error("Network Response Error");
     }})
-
+  
     .then( json => {
       if(json.status){
         console.log(json);
         alert(json + json.message);
         dash_content.innerHTML = "";
         forecast_grid.innerHTML = "";
-        dash_content.innerHTML = json.message + "Please enter a valid input";
-        
+        dash_content.innerHTML = "Error Message: " + json.status + " " + json.message + " please enter a valid input";
       } else {
+      loadingGif();
       displayWeather(json);
       displayWeatherForecast(json);
   }})
-
     .catch ((error) => {
-    console.error("Fetch Error:", error)
-    forecast_grid.innerHTML = "";
+      alert(error);
+      console.error("Fetch Error:", error)
+      dash_content.innerHTML = "Error Message: " + error;
   });
   };
 };
@@ -84,9 +84,7 @@ function displayWeather(arg){
   dash_precip.innerHTML = "Precipitation: " + arg.currentConditions.precip;
   dash_humidity.innerHTML = "Humidity: " + arg.currentConditions.humidity;
   dash_wind.innerHTML = "Wind: " + arg.currentConditions.wind.mile + " mph";
-  // dash_icon.innerHTML = arg.currentConditions.iconURL;
   dash_icon.innerHTML = `<img src="${arg.currentConditions.iconURL}"/>`
-  
   dash_comment.innerHTML = arg.currentConditions.comment;
 };
 
@@ -94,9 +92,9 @@ function displayWeather(arg){
 function displayWeatherForecast(arg){
   let forecast_grid = document.getElementById("dashboard-forecast-grid");
   
-  for(i = 1, l = arg.next_days.length; i < l; i++){
+  for(i = 1, l = arg.next_days.length - 1; i < l; i++){
     var obj = arg.next_days[i];
-
+    
     forecast_grid.innerHTML +=`
     <div id="day1">
       <p>${obj.day}</p>
@@ -112,35 +110,20 @@ function displayWeatherForecast(arg){
 // enter = search button
 document.getElementById("myform").addEventListener("submit", function (event) {
   event.preventDefault();  
-  SearchWeatherForm();
-    
+  SearchWeatherForm(); 
 });
 
-// function formValidation() {
+// Loading Gif
+let loadingGif = () => {
+  const box = document.getElementById("load");
+  const gif = document.getElementById("loading");
+  show = function(){
+  gif.style.display = "block";
+  setTimeout(hide, 4000);
+  },
 
-//   let forecast_grid = document.getElementById("dashboard-forecast-grid");
-//   let inputCity = document.getElementById("search-input").value;
-//   let specialChar = /[^a-zA-Z ]/g;
-//   forecast_grid.innerHTML=""
-
-//   if (inputCity.value.match(specialChar)){
-//     let refinedInputCity = inputCity.replace(/\s/g, "");
-
-//     fetch("https://weatherdbi.herokuapp.com/data/weather/" + refinedInputCity )
-//     .then((res) => {
-//      if (res.ok){
-//       return res.json(); 
-//      } else {
-//       throw new Error("Network Response Error");
-//     }})
-
-//     .then( json => {
-//       displayWeather(json);
-//       displayWeatherForecast(json);
-//     })
-
-//     .catch ((error) => console.error("Fetch Error:", error));
-//    } else {
-//     alert("Please enter valid city name");
-//   };
-// };
+  hide = function(){
+    gif.style.display = "none";
+  };
+  show();
+}

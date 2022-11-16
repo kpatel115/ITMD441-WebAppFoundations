@@ -37,14 +37,48 @@ body{
 }
 #search-header{
   font-size: 2em;
+  color: aliceblue;
+
+}
+#search-button{
+  border: 1px solid rosybrown;
+  background-color: rgb(255, 237, 214);
+  color: rgb(68, 78, 88);
+  border-radius: 8px;
+  height: 30px;
+  width: 35px;
+  padding: 5px;
+  line-height: 1;
+  transition-duration: 0.3s;
+}
+#search-button:hover{
+  background-color: royalblue;
+  color: antiquewhite;
+}
+#geo-button{
+  border: 1px solid rosybrown;
+  background-color: rgb(255, 237, 214);
+  color: rgb(68, 78, 88);
+  border-radius: 8px;
+  height: 35px;
+  width: 115px;
+  margin-top: 10px;
+  padding: 5px;
+  line-height: 1; 
+  font-size: 1em;
+  transition-duration: 0.4s;
+}
+#geo-button:hover{
+  background-color: royalblue;
+  color: antiquewhite;
 }
 .dashboard-form input{
   border-radius: 12px;
-  border: 1px solid slategrey;
   width: 80%;
   height: 30px;
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
+  border: 1px solid rosybrown;
+  background-color: rgb(255, 237, 214);
+  color: rgb(68, 78, 88);
 }
 
 .dashboard-content{
@@ -53,15 +87,16 @@ body{
   position: relative;
 }
 #dash-header{
+  color: rgb(239, 248, 255);
   position: absolute;
-  top: -10px;
+  top: -5px;
   left: 20px;
 }
 .dashboard-content-grid{
   margin-top: 20px;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 50% 40%;
+  display: inline-grid;
+  grid-template-columns: 60% 70%;
+  grid-template-rows: 40% 60%;
   grid-template-areas: 
   "left right"
   "bottom bottom"
@@ -73,6 +108,17 @@ body{
   font-size: 2em;
   position: relative;
 }
+.loading-container{
+  position: absolute;
+  top: 100px;
+  left: 250px;
+}
+img.loading{
+  width: 200px;
+  height: auto;
+  display: none;
+
+}
 #temp{
 position: absolute;
 top: 75px;
@@ -82,9 +128,7 @@ top: 75px;
   grid-area: right;
   padding: 0px 20px;
   font-size: 1.5em;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  box-sizing: border-box;
 }
 .dash-cont-bottom{
   padding: 0px 20px;
@@ -108,9 +152,10 @@ top: 75px;
   left: 20px;
 }
 #dashboard-forecast-grid{
-  margin-top: 40px;
+
+  margin:15px 10px ;
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(8, 14%);
+  grid-template-columns: repeat(7, 14.5%);
   grid-template-rows: 100%;
 }
