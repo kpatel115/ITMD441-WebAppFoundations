@@ -8,7 +8,7 @@ navigator.geolocation.getCurrentPosition((position) => {
     alert("Weather in your location will be loaded!");
     fetch("https://weatherdbi.herokuapp.com/data/weather/"+ currentLatitude + "," + currentLongitude)
     .then((res) => {
-      if (res.ok){
+      if (res){
        return res.json(); 
       } else {
        throw new Error("Network Response Error");
@@ -29,8 +29,8 @@ function SearchWeatherForm() {
   let inputCity = document.getElementById("search-input").value;
   let dash_content = document.getElementById("dashboard-content-grid");
 
-  
-  forecast_grid.innerHTML=""
+  forecast_grid.innerHTML="";
+
 
   if (inputCity === ""){
     alert("Please enter valid city name");
@@ -40,7 +40,8 @@ function SearchWeatherForm() {
 
     fetch("https://weatherdbi.herokuapp.com/data/weather/" + refinedInputCity )
     .then((res) => {
-     if (!res.ok){
+     if (res){
+      console.log(res);
       return res.json(); 
      } else {
       throw new Error("Network Response Error");
@@ -69,6 +70,7 @@ function SearchWeatherForm() {
 // Displays Main Weather Forecast for Today based on input and Click
 function displayWeather(arg){
   // Current Weather Forecast
+
   let dash_region = document.getElementById("region");
   let dash_day = document.getElementById("day");
   let dash_temp = document.getElementById("temp");
@@ -104,7 +106,6 @@ function displayWeatherForecast(arg){
       <img src="${obj.iconURL}">
     </div>`;
   }
-  
 };
 
 // enter = search button
@@ -126,4 +127,4 @@ let loadingGif = () => {
     gif.style.display = "none";
   };
   show();
-}
+};
