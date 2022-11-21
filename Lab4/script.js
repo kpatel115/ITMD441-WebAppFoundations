@@ -4,10 +4,13 @@ navigator.geolocation.getCurrentPosition((position) => {
   function doSomething(a, b){
     let currentLatitude = a;
     let currentLongitude = b;
+    let forecast_grid = document.getElementById("dashboard-forecast-grid");
+
     loadingGif()
     alert("Weather in your location will be loaded!");
     fetch("https://weatherdbi.herokuapp.com/data/weather/"+ currentLatitude + "," + currentLongitude)
     .then((res) => {
+      forecast_grid.innerHTML="";
       if (res){
        return res.json(); 
       } else {
@@ -50,9 +53,9 @@ function SearchWeatherForm() {
       if(json.status){
         console.log(json);
         alert(json + json.message);
-        dash_content.innerHTML = "";
-        forecast_grid.innerHTML = "";
-        dash_content.innerHTML = "Error Message: " + json.status + " " + json.message + " please enter a valid input";
+        //dash_content.innerHTML = "";
+        //forecast_grid.innerHTML = "";
+        //dash_content.innerHTML = "Error Message: " + json.status + " " + json.message + " please enter a valid input";
       } else {
       loadingGif();
       displayWeather(json);
@@ -61,7 +64,7 @@ function SearchWeatherForm() {
     .catch ((error) => {
       alert(error);
       console.error("Fetch Error:", error)
-      dash_content.innerHTML = "Error Message: " + error;
+      //dash_content.innerHTML = "Error Message: " + error;
   });
   };
 };
@@ -93,7 +96,7 @@ function displayWeather(arg){
 function displayWeatherForecast(arg){
   let forecast_grid = document.getElementById("dashboard-forecast-grid");
   
-  for(i = 1, l = arg.next_days.length - 1; i < l; i++){
+  for(i = 1, l = arg.next_days.length; i < l; i++){
     var obj = arg.next_days[i];
     
     forecast_grid.innerHTML +=`
