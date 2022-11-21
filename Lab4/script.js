@@ -14,7 +14,6 @@ navigator.geolocation.getCurrentPosition((position) => {
        throw new Error("Network Response Error");
      }})
      .then( json => {
-      
        displayWeather(json);
        displayWeatherForecast(json);
      })

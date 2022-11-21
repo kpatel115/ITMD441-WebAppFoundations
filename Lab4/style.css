@@ -147,6 +147,7 @@ top: 75px;
   position: relative;
 }
 #forecast-header{
+  color: rgb(239, 248, 255);
   position: absolute;
   top: -10px;
   left: 20px;
